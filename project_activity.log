@@ -216,3 +216,4 @@
 [2026-05-04T11:50:26] Implement initial car database array with specs
 [2026-05-04T10:47:19] Prototype hero performance stats ticker (0-60, HP, Top Speed)
 [2026-05-05T21:49:45] Style primary and secondary luxury CTA buttons
+[2026-05-06T14:44:39] Add sorting dropdown logic (Price, Horsepower, 0-60)
