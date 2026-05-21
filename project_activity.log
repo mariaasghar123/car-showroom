@@ -233,3 +233,4 @@
 [2026-05-17T18:50:22] Style primary and secondary luxury CTA buttons
 [2026-05-17T21:04:02] Add sorting dropdown logic (Price, Horsepower, 0-60)
 [2026-05-19T15:10:47] Add hover scale transitions to vehicle thumbnails
+[2026-05-21T15:20:25] Add category filter pills (All, Hypercars, Track, GT)
