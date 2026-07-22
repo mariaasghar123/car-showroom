@@ -11,3 +11,4 @@
 [2026-07-19T14:51:34] Update Tailwind glassmorphism styles
 [2026-07-20T20:03:09] Fine-tune Web Audio API sound synthesis curve
 [2026-07-22T19:51:43] Fix cursor glare offset calculation
+[2026-07-22T21:53:38] Improve modal backdrop blur compatibility
