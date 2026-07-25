@@ -20,3 +20,4 @@
 [2026-07-24T14:09:58] Optimize canvas particle rendering performance
 [2026-07-25T15:28:41] Refine typography hierarchy and spacing
 [2026-07-25T20:44:45] Refine typography hierarchy and spacing
+[2026-07-25T16:22:34] Fix cursor glare offset calculation
