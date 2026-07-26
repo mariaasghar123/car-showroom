@@ -23,3 +23,4 @@
 [2026-07-25T16:22:34] Fix cursor glare offset calculation
 [2026-07-25T20:48:57] Update Tailwind glassmorphism styles
 [2026-07-26T11:06:44] Enhance mobile navbar responsiveness
+[2026-07-26T11:50:09] Refactor vehicle inventory layout
