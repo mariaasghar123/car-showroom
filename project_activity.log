@@ -37,3 +37,4 @@
 [2026-08-02T13:15:36] Update documentation for local deployment
 [2026-08-02T21:55:56] Fix cursor glare offset calculation
 [2026-08-02T17:00:37] Update documentation for local deployment
+[2026-08-03T18:03:32] Optimize canvas particle rendering performance
