@@ -55,3 +55,4 @@
 [2026-08-12T11:06:19] Fix cursor glare offset calculation
 [2026-08-12T20:03:32] Refine typography hierarchy and spacing
 [2026-08-12T20:39:40] Refactor color variant switcher logic
+[2026-08-12T17:17:01] Add ARIA attributes to interactive buttons
