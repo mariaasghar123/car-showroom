@@ -62,3 +62,4 @@
 [2026-08-16T10:42:04] Optimize canvas particle rendering performance
 [2026-08-16T13:16:04] Enhance 3D perspective tilt calculations
 [2026-08-17T15:51:52] Fix cursor glare offset calculation
+[2026-08-17T14:32:34] Add transition smoothness to showcase cards
