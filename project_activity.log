@@ -68,3 +68,4 @@
 [2026-08-18T15:57:34] Improve modal backdrop blur compatibility
 [2026-08-18T20:14:22] Update showroom concierge contact details
 [2026-08-20T13:55:02] Update README with architectural highlights
+[2026-08-20T13:41:40] Fix cursor glare offset calculation
