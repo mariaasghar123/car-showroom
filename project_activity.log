@@ -79,3 +79,4 @@
 [2026-08-27T14:52:10] Fix cursor glare offset calculation
 [2026-08-29T13:10:39] Update aerodynamics telemetry data
 [2026-08-29T10:23:45] Refactor filter logic for category pills
+[2026-08-29T18:17:12] Update documentation for local deployment
