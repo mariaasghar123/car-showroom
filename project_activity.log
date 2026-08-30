@@ -81,3 +81,4 @@
 [2026-08-29T10:23:45] Refactor filter logic for category pills
 [2026-08-29T18:17:12] Update documentation for local deployment
 [2026-08-30T15:57:24] Improve modal backdrop blur compatibility
+[2026-08-30T17:03:38] Update Tailwind glassmorphism styles
