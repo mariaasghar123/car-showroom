@@ -86,3 +86,4 @@
 [2026-09-02T19:18:48] Enhance 3D perspective tilt calculations
 [2026-09-02T19:57:53] Enhance mobile navbar responsiveness
 [2026-09-02T14:45:59] Improve modal backdrop blur compatibility
+[2026-09-03T18:20:50] Add ARIA attributes to interactive buttons
