@@ -96,3 +96,4 @@
 [2026-09-06T13:26:39] Update showroom concierge contact details
 [2026-09-06T20:04:12] Refactor color variant switcher logic
 [2026-09-07T13:34:06] Fix cursor glare offset calculation
+[2026-09-07T15:04:08] Improve test drive reservation modal accessibility
