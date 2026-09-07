@@ -97,3 +97,4 @@
 [2026-09-06T20:04:12] Refactor color variant switcher logic
 [2026-09-07T13:34:06] Fix cursor glare offset calculation
 [2026-09-07T15:04:08] Improve test drive reservation modal accessibility
+[2026-09-07T15:27:41] Add transition smoothness to showcase cards
