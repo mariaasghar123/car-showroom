@@ -99,3 +99,4 @@
 [2026-09-07T15:04:08] Improve test drive reservation modal accessibility
 [2026-09-07T15:27:41] Add transition smoothness to showcase cards
 [2026-09-09T15:25:22] Optimize canvas particle rendering performance
+[2026-09-09T21:52:06] Refactor filter logic for category pills
