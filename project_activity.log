@@ -104,3 +104,4 @@
 [2026-09-09T10:25:37] Update luxury lease calculation formula
 [2026-09-10T17:50:33] Optimize canvas particle rendering performance
 [2026-09-11T21:31:14] Update aerodynamics telemetry data
+[2026-09-11T21:02:58] Fix cursor glare offset calculation
