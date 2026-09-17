@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APEX MOTORS | Luxury & Exotic Automotive Showroom</title>
+  <meta name="description" content="Discover rare hypercars, track weapons, and handcrafted grand tourers at Apex Motors. Private showrooms in Beverly Hills, Monaco, London, Dubai, and Tokyo." />
+
+  <!-- Tailwind CSS -->
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+
+  <!-- Google Fonts: Space Grotesk & Cinzel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-carbon text-gray-100 antialiased selection:bg-amber-500 selection:text-black">
+
+  <!-- =========================================================================
+       1. NAVIGATION BAR
+       ========================================================================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 p-[1px] shadow-lg shadow-amber-500/20 group-hover:shadow-amber-500/40 transition-all">
+          <div class="w-full h-full bg-[#0d0f15] rounded-[11px] flex items-center justify-center">
+            <!-- Apex Crest SVG -->
+            <svg class="w-6 h-6 text-amber-400 transform group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L2 19.5h5.5L12 10.5l4.5 9H22L12 2zm0 4.5l2.7 5.4h-5.4L12 6.5z"/>
+            </svg>
+          </div>
+        </div>
+        <div>
+          <span class="font-display text-xl font-bold tracking-widest text-white block leading-none">APEX</span>
+          <span class="text-[10px] text-amber-400 font-semibold tracking-[0.25em] uppercase">Exotic Motors</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-300">
+        <a href="#collection" class="hover:text-amber-400 transition-colors">The Collection</a>
+        <a href="#spotlight" class="hover:text-amber-400 transition-colors">Flagship Spotlight</a>
+        <a href="#experience" class="hover:text-amber-400 transition-colors">VIP Concierge</a>
+        <a href="#financing" class="hover:text-amber-400 transition-colors">Lease & Finance</a>
+        <a href="#showrooms" class="hover:text-amber-400 transition-colors">Private Showrooms</a>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="hidden sm:flex items-center gap-4">
+        <!-- Private Collection Favorites Trigger -->
+        <button 
+          onclick="filterFavorites()" 
+          class="relative p-2.5 rounded-lg bg-white/5 border border-white/10 hover:border-amber-400/50 hover:bg-white/10 transition-all text-gray-300 hover:text-amber-400"
+          title="View Saved Vehicles"
+        >
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+          <span id="fav-count" class="hidden absolute -top-1.5 -right-1.5 w-5 h-5 bg-amber-500 text-black text-[11px] font-black rounded-full items-center justify-center">0</span>
+        </button>
+
+        <!-- CTA Button -->
+        <button onclick="openTestDriveModal()" class="btn-primary-luxury text-xs py-2.5 px-5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          <span>Book Private Viewing</span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button id="mobile-menu-toggle" class="lg:hidden p-2 text-gray-300 hover:text-white" aria-label="Open Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+
+    </div>
+
+    <!-- Mobile Nav Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-[#0c0e14] border-b border-white/10 px-6 py-5 space-y-4">
+      <a href="#collection" class="block text-base font-medium text-gray-200 hover:text-amber-400">The Collection</a>
+      <a href="#spotlight" class="block text-base font-medium text-gray-200 hover:text-amber-400">Flagship Spotlight</a>
+      <a href="#experience" class="block text-base font-medium text-gray-200 hover:text-amber-400">VIP Concierge</a>
+      <a href="#financing" class="block text-base font-medium text-gray-200 hover:text-amber-400">Lease & Finance</a>
+      <a href="#showrooms" class="block text-base font-medium text-gray-200 hover:text-amber-400">Private Showrooms</a>
+      <div class="pt-2">
+        <button onclick="openTestDriveModal()" class="btn-primary-luxury text-sm w-full py-3">
+          Book Private Viewing
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       2. HERO SECTION
+       ========================================================================= -->
+  <section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <!-- Cinematic Fullscreen Background -->
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="assets/images/hero_supercar.jpg" 
+        alt="Apex Luxury Showroom Hypercar" 
+        class="w-full h-full object-cover object-center scale-105 filter brightness-[0.82] contrast-110"
+      />
+      <!-- Dramatic Vignette & Gradient Overlays -->
+      <div class="absolute inset-0 bg-gradient-to-t from-[#090a0d] via-[#090a0d]/60 to-[#090a0d]/40"></div>
+      <div class="absolute inset-0 bg-radial-at-c from-transparent via-[#090a0d]/50 to-[#090a0d]/90"></div>
+      
+      <!-- Interactive Aerodynamic Wind Tunnel & Ember Particle Canvas -->
+      <canvas id="hero-particles" class="absolute inset-0 z-0 pointer-events-none w-full h-full"></canvas>
+    </div>
+
+    <!-- Hero Content Container -->
+    <div class="relative z-10 max-w-5xl mx-auto text-center mt-12">
+      
+      <!-- Live Status Pill -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/60 border border-amber-500/30 backdrop-blur-md mb-8 animate-float">
+        <span class="w-2.5 h-2.5 rounded-full bg-amber-400 beacon-pulse"></span>
+        <span class="text-xs font-semibold uppercase tracking-widest text-amber-300">2026 Fleet Unveiled &bull; Private Allocations Open</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="hero-heading font-display text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+        PRECISION ENGINEERED.<br>
+        <span class="gradient-text-gold">PURE ADRENALINE.</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed mb-10 text-balance">
+        Enter the sanctuary of automotive transcendence. We curate certified ultra-rare hypercars, championship-proven track machines, and bespoke grand tourers for discerning private collectors.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <a href="#collection" class="btn-primary-luxury btn-shimmer text-sm py-4 px-8 w-full sm:w-auto shadow-xl">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+          <span>Explore Showroom Fleet</span>
+        </a>
+        <button onclick="openDetailModal('aetherius-nevera')" class="btn-secondary-luxury text-sm py-4 px-8 w-full sm:w-auto">
+          <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span>Flagship Spec Deep-Dive</span>
+        </button>
+      </div>
+
+      <!-- Quick Stats Ticker Strip (Live Animated Counters) -->
+      <div id="stats-ticker" class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto bg-black/60 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-2xl">
+        <div class="border-b md:border-b-0 md:border-r border-white/10 pb-4 md:pb-0">
+          <span class="block text-xs uppercase tracking-widest text-gray-400 font-semibold mb-1">Acceleration</span>
+          <span id="stat-accel" class="text-2xl sm:text-3xl font-black text-amber-400">1.85s</span>
+          <span class="block text-[11px] text-gray-400 mt-0.5">0-60 MPH (World Record)</span>
+        </div>
+        <div class="border-b md:border-b-0 md:border-r border-white/10 pb-4 md:pb-0">
+          <span class="block text-xs uppercase tracking-widest text-gray-400 font-semibold mb-1">Peak Output</span>
+          <span id="stat-hp" class="text-2xl sm:text-3xl font-black text-white">1,914 HP</span>
+          <span class="block text-[11px] text-gray-400 mt-0.5">Quad-Motor Torque Vectoring</span>
+        </div>
+        <div class="border-r border-white/10 pr-2">
+          <span class="block text-xs uppercase tracking-widest text-gray-400 font-semibold mb-1">Top Velocity</span>
+          <span id="stat-speed" class="text-2xl sm:text-3xl font-black text-white">258 MPH</span>
+          <span class="block text-[11px] text-gray-400 mt-0.5">Tested Track Speed</span>
+        </div>
+        <div>
+          <span class="block text-xs uppercase tracking-widest text-gray-400 font-semibold mb-1">Global Provenance</span>
+          <span id="stat-salons" class="text-2xl sm:text-3xl font-black text-amber-400">5 Salons</span>
+          <span class="block text-[11px] text-gray-400 mt-0.5">Worldwide Concierge Delivery</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       3. THE CURATED FLEET (SHOWROOM GRID)
+       ========================================================================= -->
+  <section id="collection" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto reveal">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+      <div>
+        <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-amber-400 mb-2">
+          <span>Showroom Inventory</span>
+          <span>&bull;</span>
+          <span>Immediate Delivery</span>
+        </div>
+        <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-white">THE CURRENT FLEET</h2>
+      </div>
+      <p class="text-sm text-gray-400 max-w-md mt-4 md:mt-0 font-light">
+        Every vehicle undergoes a 150-point factory inspection, certified dyno calibration, and full historical provenance verification.
+      </p>
+    </div>
+
+    <!-- Filter & Search Controls Bar -->
+    <div class="glass-panel p-4 mb-10 flex flex-col lg:flex-row items-center justify-between gap-4">
+      
+      <!-- Category Pills -->
+      <div class="flex flex-wrap items-center gap-2 w-full lg:w-auto">
+        <button data-category="all" class="filter-btn px-4 py-2 rounded-lg text-xs tracking-wider uppercase transition-all bg-amber-500 text-black font-bold">
+          All Vehicles
+        </button>
+        <button data-category="hypercar" class="filter-btn px-4 py-2 rounded-lg text-xs tracking-wider uppercase transition-all bg-white/5 text-gray-300 hover:bg-white/10">
+          Hypercars
+        </button>
+        <button data-category="track" class="filter-btn px-4 py-2 rounded-lg text-xs tracking-wider uppercase transition-all bg-white/5 text-gray-300 hover:bg-white/10">
+          Track Specials
+        </button>
+        <button data-category="grand_tourer" class="filter-btn px-4 py-2 rounded-lg text-xs tracking-wider uppercase transition-all bg-white/5 text-gray-300 hover:bg-white/10">
+          Grand Tourers
+        </button>
+      </div>
+
+      <!-- Search & Sort Row -->
+      <div class="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto">
+        <!-- Search Input -->
+        <div class="relative w-full sm:w-64">
+          <input 
+            type="text" 
+            id="fleet-search" 
+            placeholder="Search model, V12, electric..." 
+            class="w-full bg-black/50 border border-white/10 rounded-lg pl-9 pr-4 py-2 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-amber-400 transition-colors"
+          />
+          <svg class="w-4 h-4 text-gray-500 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </div>
+
+        <!-- Sort Select -->
+        <div class="w-full sm:w-auto">
+          <select 
+            id="fleet-sort" 
+            class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-xs text-gray-300 focus:outline-none focus:border-amber-400 transition-colors"
+          >
+            <option value="featured">Sort by: Curated Order</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="zero-sixty">Acceleration: 0-60 Time</option>
+            <option value="horsepower">Power: Max HP</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Vehicles Card Grid (Rendered dynamically via app.js) -->
+    <div id="fleet-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Injected via JavaScript -->
+    </div>
+
+  </section>
+
+  <!-- =========================================================================
+       4. INTERACTIVE 360 HOTSPOT & COCKPIT FEATURE EXPLORER
+       ========================================================================= -->
+  <section id="spotlight" class="py-24 bg-[#0d0f15] border-y border-white/10 relative overflow-hidden reveal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="badge-gold mb-3">Interactive Engineering Explorer</span>
+        <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-white mb-4">
+          INTO THE COCKPIT & CHASSIS
+        </h2>
+        <p class="text-gray-400 text-sm font-light">
+          Click the interactive telemetry markers across the cockpit and aerodynamic surface to explore formula-grade telemetry, forged carbon engineering, and acoustic precision.
+        </p>
+      </div>
+
+      <!-- Explorer Stage -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Interactive Visual with Hotspots -->
+        <div class="lg:col-span-8 relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl group bg-black">
+          <img 
+            src="assets/images/luxury_cockpit.jpg" 
+            alt="Apex Cockpit Telemetry" 
+            class="w-full h-[460px] sm:h-[520px] object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 pointer-events-none"></div>
+
+          <!-- Hotspot 1: Steering Wheel -->
+          <div class="hotspot-dot active" style="top: 60%; left: 50%;" data-hotspot="steering" title="F1 Steering Display">
+            <div class="hotspot-pulse"></div>
+          </div>
+
+          <!-- Hotspot 2: Active Center Console -->
+          <div class="hotspot-dot" style="top: 72%; left: 76%;" data-hotspot="engine" title="Drive Dynamics">
+            <div class="hotspot-pulse"></div>
+          </div>
+
+          <!-- Hotspot 3: Shift Lights HUD -->
+          <div class="hotspot-dot" style="top: 34%; left: 50%;" data-hotspot="aero" title="Shift LED Cluster">
+            <div class="hotspot-pulse"></div>
+          </div>
+
+          <!-- Hotspot 4: Alcantara Trim -->
+          <div class="hotspot-dot" style="top: 68%; left: 18%;" data-hotspot="interior" title="Italian Upholstery">
+            <div class="hotspot-pulse"></div>
+          </div>
+
+          <!-- Hotspot 5: Digital Instrument Cluster -->
+          <div class="hotspot-dot" style="top: 44%; left: 50%;" data-hotspot="brakes" title="Telemetry Screen">
+            <div class="hotspot-pulse"></div>
+          </div>
+
+          <!-- Overlay Badge -->
+          <div class="absolute bottom-5 left-5 z-20">
+            <span class="text-xs bg-black/70 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 text-gray-300">
+              Interactive Viewport: Click pins to inspect component telemetry
+            </span>
+          </div>
+        </div>
+
+        <!-- Hotspot Telemetry Detail Card -->
+        <div class="lg:col-span-4">
+          <div class="glass-panel p-8 relative">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center mb-6">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+
+            <span id="hotspot-category" class="text-xs text-amber-400 font-bold uppercase tracking-widest block mb-2">
+              Cockpit Ergonomics
+            </span>
+            <h3 id="hotspot-title" class="text-2xl font-black text-white mb-4 leading-snug">
+              Formula 1 Steering & Digital Telemetry
+            </h3>
+            <p id="hotspot-desc" class="text-sm text-gray-400 leading-relaxed mb-6 font-light">
+              Constructed from forged dry carbon with integrated LED shift lights, rotary drive-mode dials, and ultra-high refresh rate OLED gauge telemetry.
+            </p>
+
+            <div class="space-y-3 border-t border-white/10 pt-6">
+              <div class="flex items-center justify-between text-xs">
+                <span class="text-gray-400">Material Composition</span>
+                <span class="font-bold text-white">Pre-Preg T800 Carbon</span>
+              </div>
+              <div class="flex items-center justify-between text-xs">
+                <span class="text-gray-400">Response Latency</span>
+                <span class="font-bold text-amber-400">&lt; 0.005s Realtime</span>
+              </div>
+              <div class="flex items-center justify-between text-xs">
+                <span class="text-gray-400">Driver Telemetry</span>
+                <span class="font-bold text-white">CAN-Bus High-Speed</span>
+              </div>
+            </div>
+
+            <div class="mt-8">
+              <button onclick="playSupercarSound()" class="btn-primary-luxury text-xs py-3 w-full">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+                </svg>
+                <span>Trigger Exhaust Acoustic Profile</span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. LUXURY LEASE & FINANCING CALCULATOR
+       ========================================================================= -->
+  <section id="financing" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto reveal">
+    <div class="glass-panel p-8 sm:p-12 border border-white/10 rounded-3xl relative overflow-hidden">
+      <!-- Background Ambient Glow -->
+      <div class="absolute -top-32 -right-32 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Column: Controls -->
+        <div class="lg:col-span-7">
+          <span class="badge-gold mb-3">Apex Financial Services</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white mb-4">
+            BESPOKE ACQUISITION & LEASE
+          </h2>
+          <p class="text-sm text-gray-400 mb-8 font-light leading-relaxed">
+            Tailored private financing with structured residual values, confidential registration, and zero amortization penalties.
+          </p>
+
+          <div class="space-y-6">
+            <!-- Vehicle Price Slider -->
+            <div>
+              <div class="flex justify-between items-center text-sm font-semibold mb-2">
+                <span class="text-gray-300">Vehicle Acquisition Value</span>
+                <span id="calc-price-val" class="text-amber-400 font-bold text-lg">$648,000</span>
+              </div>
+              <input type="range" id="calc-price" min="250000" max="2500000" step="25000" value="648000" />
+              <div class="flex justify-between text-[11px] text-gray-500 mt-1">
+                <span>$250,000</span>
+                <span>$1,250,000</span>
+                <span>$2,500,000</span>
+              </div>
+            </div>
+
+            <!-- Down Payment Slider -->
+            <div>
+              <div class="flex justify-between items-center text-sm font-semibold mb-2">
+                <span class="text-gray-300">Initial Down Payment Capital</span>
+                <span id="calc-down-val" class="text-amber-400 font-bold text-lg">20% ($129,600)</span>
+              </div>
+              <input type="range" id="calc-down" min="10" max="50" step="5" value="20" />
+              <div class="flex justify-between text-[11px] text-gray-500 mt-1">
+                <span>10% (Minimum)</span>
+                <span>30%</span>
+                <span>50% (Recommended)</span>
+              </div>
+            </div>
+
+            <!-- Term Selection -->
+            <div>
+              <label class="block text-sm font-semibold text-gray-300 mb-2">Lease / Financing Term</label>
+              <select id="calc-term" class="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-400">
+                <option value="24">24 Months (Short-Term Portfolio Lease)</option>
+                <option value="36" selected>36 Months (Standard Executive Lease)</option>
+                <option value="48">48 Months (Bespoke Extended Financing)</option>
+                <option value="60">60 Months (Long-Term Capital Acquisition)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Computation Preview Card -->
+        <div class="lg:col-span-5 bg-black/60 border border-white/10 rounded-2xl p-8 shadow-2xl flex flex-col justify-between">
+          <div>
+            <span class="text-xs uppercase tracking-widest text-amber-400 font-bold block mb-1">Estimated Private Lease</span>
+            <div class="flex items-baseline gap-2 mb-6">
+              <span id="calc-monthly" class="text-4xl sm:text-5xl font-black text-white">$6,200</span>
+              <span class="text-sm text-gray-400 font-medium">/ month</span>
+            </div>
+
+            <div class="space-y-3.5 border-t border-white/10 pt-6 text-xs text-gray-300">
+              <div class="flex justify-between">
+                <span class="text-gray-400">Net Principal Financed</span>
+                <span id="calc-financed" class="font-bold text-white">$518,400</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-400">Competitive Prime APR</span>
+                <span class="font-bold text-amber-400">5.9% Tier 1 Preferred</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-400">Total Estimated Finance Charge</span>
+                <span id="calc-interest" class="font-bold text-white">$48,200</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-400">Residual Buyout Option</span>
+                <span class="font-bold text-emerald-400">Guaranteed Minimum Value</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-white/10">
+            <button onclick="openTestDriveModal()" class="btn-primary-luxury w-full text-sm py-3.5">
+              Apply for Discrete Credit Facility
+            </button>
+            <p class="text-[10px] text-gray-500 text-center mt-3">
+              *Estimates for illustration only. Subject to credit verification by Apex Private Wealth Advisory.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. THE VIP EXPERIENCE & CONCIERGE PILLARS
+       ========================================================================= -->
+  <section id="experience" class="py-24 bg-[#0a0c10] border-t border-white/10 reveal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="badge-gold mb-3">White-Glove Services</span>
+        <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-white mb-4">
+          THE APEX CONCIERGE ADVANTAGE
+        </h2>
+        <p class="text-gray-400 text-sm font-light">
+          Acquiring a vehicle from Apex Motors extends far beyond the showroom doors. You gain entry to an elite international ecosystem.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Pillar 1 -->
+        <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center mb-5">
+              <!-- Enclosed Transport Icon -->
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Climate-Controlled Enclosed Delivery</h3>
+            <p class="text-xs text-gray-400 leading-relaxed font-light">
+              Doorstep delivery to any international villa, estate, or private yacht hangar via dedicated air-ride enclosed transport.
+            </p>
+          </div>
+          <span class="text-[11px] text-amber-400 font-semibold tracking-wider mt-6 block uppercase">Global Worldwide &bull; Insured</span>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center mb-5">
+              <!-- Certified Provenance Icon -->
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Certified Provenance & Dyno Verification</h3>
+            <p class="text-xs text-gray-400 leading-relaxed font-light">
+              Complete historical logbook, telemetry audit, clean title provenance, and a fresh 150-point factory certification.
+            </p>
+          </div>
+          <span class="text-[11px] text-amber-400 font-semibold tracking-wider mt-6 block uppercase">100% Guaranteed Pedigree</span>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center mb-5">
+              <!-- Private Track Club Icon -->
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Private Track Club Access</h3>
+            <p class="text-xs text-gray-400 leading-relaxed font-light">
+              Exclusive quarterly track days with professional FIA racing instructors at Silverstone, Paul Ricard, and Yas Marina Circuit.
+            </p>
+          </div>
+          <span class="text-[11px] text-amber-400 font-semibold tracking-wider mt-6 block uppercase">Complimentary 1-Year Pass</span>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center mb-5">
+              <!-- Off-Market Icon -->
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Confidential Off-Market Sourcing</h3>
+            <p class="text-xs text-gray-400 leading-relaxed font-light">
+              Access to ultra-exclusive allocations and unlisted private collections without public listing trace.
+            </p>
+          </div>
+          <span class="text-[11px] text-amber-400 font-semibold tracking-wider mt-6 block uppercase">Strict Discretion</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       7. AUTOMOTIVE PRESS & TESTIMONIALS
+       ========================================================================= -->
+  <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+    <div class="text-center mb-12">
+      <span class="text-xs font-bold text-gray-500 uppercase tracking-widest block mb-4">Recognized Globally By Leading Automotive Authorities</span>
+      <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-16 opacity-50 grayscale hover:grayscale-0 hover:opacity-90 transition-all duration-300">
+        <span class="font-display text-xl font-bold tracking-widest text-white">MOTOR TREND</span>
+        <span class="font-display text-xl font-bold tracking-widest text-white">TOP GEAR</span>
+        <span class="font-display text-xl font-bold tracking-widest text-white">CAR AND DRIVER</span>
+        <span class="font-display text-xl font-bold tracking-widest text-white">ROBB REPORT</span>
+        <span class="font-display text-xl font-bold tracking-widest text-white">EVO MAGAZINE</span>
+      </div>
+    </div>
+
+    <!-- Verified Collector Testimonials Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+      
+      <div class="glass-panel p-6 rounded-2xl">
+        <div class="flex items-center gap-1 text-amber-400 mb-4">
+          &#9733;&#9733;&#9733;&#9733;&#9733;
+        </div>
+        <p class="text-sm text-gray-300 font-light italic mb-6">
+          "Apex Motors secured an off-market SF90 Assetto Fiorano allocation that two authorized dealerships claimed was impossible to get. Delivered directly to my Geneva residence within 5 days."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-500 to-amber-700 flex items-center justify-center font-bold text-black text-xs">
+            AL
+          </div>
+          <div>
+            <h4 class="text-xs font-bold text-white">Lord Alexander L.</h4>
+            <span class="text-[11px] text-gray-400">Private Collector, Geneva</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-panel p-6 rounded-2xl">
+        <div class="flex items-center gap-1 text-amber-400 mb-4">
+          &#9733;&#9733;&#9733;&#9733;&#9733;
+        </div>
+        <p class="text-sm text-gray-300 font-light italic mb-6">
+          "The Weissach GT3 RS was prepared with flawless paint protection, telemetry calibration, and came with private circuit coaching. The level of bespoke service is unmatched in North America."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-500 to-amber-700 flex items-center justify-center font-bold text-black text-xs">
+            MR
+          </div>
+          <div>
+            <h4 class="text-xs font-bold text-white">Michael R.</h4>
+            <span class="text-[11px] text-gray-400">Silicon Valley & Beverly Hills</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-panel p-6 rounded-2xl">
+        <div class="flex items-center gap-1 text-amber-400 mb-4">
+          &#9733;&#9733;&#9733;&#9733;&#9733;
+        </div>
+        <p class="text-sm text-gray-300 font-light italic mb-6">
+          "The discretion and transparency in financial structuring made our family office acquisition smooth and instantaneous. Apex is our exclusive partner for rare automotive acquisitions."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-500 to-amber-700 flex items-center justify-center font-bold text-black text-xs">
+            TA
+          </div>
+          <div>
+            <h4 class="text-xs font-bold text-white">Tariq Al-Mansoor</h4>
+            <span class="text-[11px] text-gray-400">DIFC Private Office, Dubai</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       8. GLOBAL SHOWROOMS & PRIVATE INQUIRY
+       ========================================================================= -->
+  <section id="showrooms" class="py-24 bg-[#0a0c10] border-t border-white/10 reveal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="badge-gold mb-3">Global Presence</span>
+        <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-white mb-4">
+          OUR PRIVATE SALONS
+        </h2>
+        <p class="text-gray-400 text-sm font-light">
+          Private access by appointment only. Secure valet, helipad transfers, and bespoke vehicle configuration lounges.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        
+        <!-- Beverly Hills -->
+        <div class="glass-panel p-6 rounded-2xl">
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-400 block mb-1">United States</span>
+          <h3 class="text-xl font-bold text-white mb-3">Beverly Hills Salon</h3>
+          <p class="text-xs text-gray-400 leading-relaxed mb-4">
+            9600 Wilshire Boulevard<br>Beverly Hills, CA 90212
+          </p>
+          <div class="text-[11px] text-gray-500 border-t border-white/5 pt-3">
+            Concierge: +1 (310) 849-0199<br>Private Viewing Hours: 09:00 - 20:00
+          </div>
+        </div>
+
+        <!-- London Mayfair -->
+        <div class="glass-panel p-6 rounded-2xl">
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-400 block mb-1">United Kingdom</span>
+          <h3 class="text-xl font-bold text-white mb-3">London Mayfair</h3>
+          <p class="text-xs text-gray-400 leading-relaxed mb-4">
+            24 Berkeley Square<br>Mayfair, London W1J 6HE
+          </p>
+          <div class="text-[11px] text-gray-500 border-t border-white/5 pt-3">
+            Concierge: +44 20 7946 0912<br>Private Viewing Hours: 10:00 - 19:00
+          </div>
+        </div>
+
+        <!-- Dubai DIFC -->
+        <div class="glass-panel p-6 rounded-2xl">
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-400 block mb-1">United Arab Emirates</span>
+          <h3 class="text-xl font-bold text-white mb-3">Dubai Downtown</h3>
+          <p class="text-xs text-gray-400 leading-relaxed mb-4">
+            Gate Precinct 4, DIFC<br>Downtown Dubai, UAE
+          </p>
+          <div class="text-[11px] text-gray-500 border-t border-white/5 pt-3">
+            Concierge: +971 4 312 8840<br>Private Viewing Hours: 10:00 - 22:00
+          </div>
+        </div>
+
+        <!-- Tokyo Ginza -->
+        <div class="glass-panel p-6 rounded-2xl">
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-400 block mb-1">Japan</span>
+          <h3 class="text-xl font-bold text-white mb-3">Tokyo Ginza</h3>
+          <p class="text-xs text-gray-400 leading-relaxed mb-4">
+            6-10-1 Ginza, Chuo-ku<br>Tokyo 104-0061
+          </p>
+          <div class="text-[11px] text-gray-500 border-t border-white/5 pt-3">
+            Concierge: +81 3 5555 0192<br>Private Viewing Hours: 10:00 - 20:00
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Private Newsletter / Allocation Desk Box -->
+      <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-amber-500/20 max-w-4xl mx-auto text-center relative overflow-hidden">
+        <h3 class="font-display text-2xl sm:text-3xl font-bold text-white mb-3">
+          RECEIVE OFF-MARKET ALLOCATIONS
+        </h3>
+        <p class="text-xs sm:text-sm text-gray-400 max-w-xl mx-auto mb-6">
+          Subscribe to our private registry to receive encrypted quarterly releases of limited-edition hypercar build slots before public announcement.
+        </p>
+
+        <form id="newsletter-form" class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-lg mx-auto">
+          <input 
+            type="email" 
+            id="newsletter-email" 
+            required 
+            placeholder="Enter your confidential email..." 
+            class="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-amber-400"
+          />
+          <button type="submit" class="btn-primary-luxury text-xs py-3.5 px-6 whitespace-nowrap w-full sm:w-auto">
+            Join Registry
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       9. FOOTER
+       ========================================================================= -->
+  <footer class="bg-[#07080b] border-t border-white/10 pt-16 pb-12 text-xs text-gray-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-12">
+        
+        <!-- Brand Info -->
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-400 to-amber-600 p-[1px]">
+              <div class="w-full h-full bg-[#0d0f15] rounded-[7px] flex items-center justify-center">
+                <svg class="w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L2 19.5h5.5L12 10.5l4.5 9H22L12 2zm0 4.5l2.7 5.4h-5.4L12 6.5z"/>
+                </svg>
+              </div>
+            </div>
+            <span class="font-display text-lg font-bold tracking-widest text-white">APEX MOTORS</span>
+          </div>
+          <p class="text-xs text-gray-500 leading-relaxed max-w-sm mb-4">
+            Apex Exotic Motors is an independent international dealer and brokerage specializing in rare hypercars and motorsport machinery. All trademarks and brand names are property of their respective manufacturers.
+          </p>
+          <span class="text-[11px] text-amber-500">&copy; 2026 Apex Exotic Motors Worldwide. All rights reserved.</span>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-3">Inventory</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#collection" class="hover:text-amber-400 transition-colors">Electric Hypercars</a></li>
+            <li><a href="#collection" class="hover:text-amber-400 transition-colors">V12 Naturally Aspirated</a></li>
+            <li><a href="#collection" class="hover:text-amber-400 transition-colors">Track Special Editions</a></li>
+            <li><a href="#collection" class="hover:text-amber-400 transition-colors">Super Grand Tourers</a></li>
+            <li><a href="#collection" class="hover:text-amber-400 transition-colors">Off-Market Vault</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-3">Concierge</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#experience" class="hover:text-amber-400 transition-colors">Enclosed Delivery</a></li>
+            <li><a href="#financing" class="hover:text-amber-400 transition-colors">Bespoke Financing</a></li>
+            <li><a href="#experience" class="hover:text-amber-400 transition-colors">Dyno & Certification</a></li>
+            <li><a href="#experience" class="hover:text-amber-400 transition-colors">International Track Club</a></li>
+            <li><a href="#showrooms" class="hover:text-amber-400 transition-colors">Helipad Transfers</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-3">Governance</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Confidentiality Agreement</a></li>
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Client Escrow Protocols</a></li>
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Terms of Viewing</a></li>
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Security & AML Compliance</a></li>
+            <li><a href="#" class="hover:text-amber-400 transition-colors">Cookie Preferences</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       10. VEHICLE DETAIL MODAL
+       ========================================================================= -->
+  <div id="detail-modal" class="modal-overlay">
+    <div class="modal-container relative">
+      <!-- Close Button -->
+      <button onclick="closeModals()" class="absolute top-4 right-4 z-30 w-10 h-10 rounded-full bg-black/70 border border-white/20 text-white flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      
+      <!-- Body populated dynamically -->
+      <div id="detail-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       11. VIP TEST DRIVE / VIEWING BOOKING MODAL
+       ========================================================================= -->
+  <div id="test-drive-modal" class="modal-overlay">
+    <div class="modal-container p-8 max-w-xl relative">
+      
+      <!-- Close Button -->
+      <button onclick="closeModals()" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center justify-center hover:bg-white/10 hover:text-white transition-all">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+
+      <div class="mb-6">
+        <span class="badge-gold mb-2">Private Client Services</span>
+        <h3 class="text-2xl font-black text-white">SCHEDULE A PRIVATE VIEWING</h3>
+        <p class="text-xs text-gray-400 mt-1">Our dedicated concierge will arrange bespoke access, vehicle preparation, and personalized salon reception.</p>
+      </div>
+
+      <form id="test-drive-form" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1">Select Desired Vehicle</label>
+          <select id="booking-car" class="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-400"></select>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Preferred Private Salon</label>
+            <select id="booking-showroom" class="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-400">
+              <option value="Beverly Hills">Beverly Hills, California</option>
+              <option value="London Mayfair">London Mayfair, UK</option>
+              <option value="Dubai Downtown">Dubai Downtown DIFC, UAE</option>
+              <option value="Tokyo Ginza">Tokyo Ginza, Japan</option>
+              <option value="Monaco Private Port">Monaco Port Hangar</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Requested Viewing Date</label>
+            <input type="date" id="booking-date" required class="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-400" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Full Legal Name</label>
+            <input type="text" id="booking-name" required placeholder="e.g. Sterling Archer" class="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-amber-400" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Direct Telephone / Mobile</label>
+            <input type="tel" id="booking-phone" required placeholder="+1 (555) 019-2831" class="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-amber-400" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1">VIP Requirements & Hospitality</label>
+          <div class="grid grid-cols-2 gap-2 text-xs text-gray-300">
+            <label class="flex items-center gap-2 p-2 rounded bg-white/5 border border-white/5 cursor-pointer hover:bg-white/10">
+              <input type="checkbox" class="accent-amber-500" />
+              <span>Helipad Shuttle Transfer</span>
+            </label>
+            <label class="flex items-center gap-2 p-2 rounded bg-white/5 border border-white/5 cursor-pointer hover:bg-white/10">
+              <input type="checkbox" class="accent-amber-500" />
+              <span>Private Closed Circuit Run</span>
+            </label>
+            <label class="flex items-center gap-2 p-2 rounded bg-white/5 border border-white/5 cursor-pointer hover:bg-white/10">
+              <input type="checkbox" class="accent-amber-500" />
+              <span>Family Office Representation</span>
+            </label>
+            <label class="flex items-center gap-2 p-2 rounded bg-white/5 border border-white/5 cursor-pointer hover:bg-white/10">
+              <input type="checkbox" class="accent-amber-500" />
+              <span>Champagne Tasting Reception</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="pt-4">
+          <button type="submit" class="btn-primary-luxury text-sm w-full py-3.5">
+            Confirm Confidential Reservation
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       12. TOAST NOTIFICATION CONTAINER
+       ========================================================================= -->
+  <div id="toast-container"></div>
+
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+
+</body>
+</html>
