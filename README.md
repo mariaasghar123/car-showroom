@@ -1,5 +1,7 @@
 # 🏎️ APEX MOTORS | Luxury & Exotic Car Showroom
 
+**🔗 Live Demo: [car-showroom-brown-six.vercel.app](https://car-showroom-brown-six.vercel.app/)**
+
 A state-of-the-art frontend landing page UI for a luxury exotic car showroom, crafted with modern HTML5, CSS3, Tailwind CSS, and Vanilla JavaScript. Features ultra-HD studio photography, 3D card tilts, aerodynamic particle canvas animations, and interactive client services.
 
 ---
@@ -32,8 +34,8 @@ A state-of-the-art frontend landing page UI for a luxury exotic car showroom, cr
 
 ### Clone the Repository
 ```bash
-git clone https://github.com/mariaasghar123/apex-motors.git
-cd apex-motors
+git clone https://github.com/mariaasghar123/car-showroom.git
+cd car-showroom
 ```
 
 ### Run Locally
