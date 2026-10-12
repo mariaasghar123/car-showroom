@@ -175,3 +175,4 @@
 [2026-10-10T19:11:32] Enhance 3D perspective tilt calculations
 [2026-10-11T16:31:56] Refine typography hierarchy and spacing
 [2026-10-11T12:33:11] Refactor vehicle inventory layout
+[2026-10-12T20:11:07] Fix cursor glare offset calculation
